@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAKSH 2025 Event Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0070f3',
+                        secondary: '#ff0080',
+                        tertiary: '#00c9c9',
+                        dark: '#111111',
+                        light: '#f2f2f2',
+                    },
+                    fontFamily: {
+                        poppins: ['Poppins', 'sans-serif'],
+                    },
+                    animation: {
+                        'spin-slow': 'spin 3s linear infinite',
+                        'spin-reverse': 'spin 3s linear infinite reverse',
+                        'float': 'float 15s infinite ease-in-out',
+                        'pulse-glow': 'pulse-glow 2s infinite ease-in-out alternate',
+                        'glitch-anim': 'glitch-anim 3s infinite linear alternate-reverse',
+                        'glitch-anim-2': 'glitch-anim 2s infinite linear alternate-reverse',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        'pulse-glow': {
+                            '0%': { opacity: 0.5, boxShadow: '0 0 30px 5px rgba(59, 130, 246, 0.4)' },
+                            '100%': { opacity: 1, boxShadow: '0 0 40px 10px rgba(59, 130, 246, 0.7)' },
+                        },
+                        'glitch-anim': {
+                            '0%': { transform: 'translate(-5px, -5px)' },
+                            '25%': { transform: 'translate(5px, 5px)' },
+                            '50%': { transform: 'translate(-10px, 10px)' },
+                            '75%': { transform: 'translate(10px, -10px)' },
+                            '100%': { transform: 'translate(-5px, 5px)' },
+                        },
+                    },
+                    backgroundImage: {
+                        'gradient-primary': 'linear-gradient(90deg, #0070f3, #ff0080)',
+                        'gradient-secondary': 'linear-gradient(90deg, #00c9c9, #0070f3)',
+                    },
+                },
+            },
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <style>
+        /* Custom styles that can't be easily achieved with Tailwind */
+        .text-gradient {
+            background: linear-gradient(90deg, #0070f3, #ff0080);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0;
+            background: linear-gradient(90deg, #0070f3, #ff0080);
+            animation: load 4s forwards cubic-bezier(0.17, 0.67, 0.83, 0.67);
+        }
+
+        .loading-title::before,
+        .loading-title::after {
+            content: 'DAKSH 2025';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+        }
+
+        .loading-title::before {
+            color: #ff0080;
+            z-index: -1;
+            clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+            transform: translate(-5px, -5px);
+            animation: glitch-anim 3s infinite linear alternate-reverse;
+        }
+
+        .loading-title::after {
+            color: #00c9c9;
+            z-index: -2;
+            clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0 100%);
+            transform: translate(5px, 5px);
+            animation: glitch-anim 2s infinite linear alternate-reverse;
+        }
+
+        @keyframes load {
+            0% {
+                width: 0;
+            }
+
+            10% {
+                width: 10%;
+            }
+
+            25% {
+                width: 25%;
+            }
+
+            50% {
+                width: 50%;
+            }
+
+            75% {
+                width: 75%;
+            }
+
+            90% {
+                width: 95%;
+            }
+
+            100% {
+                width: 100%;
+            }
+        }
+
+        @keyframes glitch-anim {
+            0% {
+                transform: translate(-5px, -5px);
+            }
+
+            25% {
+                transform: translate(5px, 5px);
+            }
+
+            50% {
+                transform: translate(-10px, 10px);
+            }
+
+            75% {
+                transform: translate(10px, -10px);
+            }
+
+            100% {
+                transform: translate(-5px, 5px);
+            }
+        }
+
+        /* Fix for some animations */
+        .ktj-spinner:nth-child(1) {
+            animation: spin 1.5s linear infinite;
+        }
+
+        .ktj-spinner:nth-child(2) {
+            animation: spin 1.75s linear infinite reverse;
+        }
+
+        .ktj-spinner:nth-child(3) {
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .about-image-placeholder::before {
+            content: 'DAKSH 2025';
+            font-size: 3rem;
+            font-weight: 800;
+            color: rgba(255, 255, 255, 0.1);
+            letter-spacing: 5px;
+        }
+
+        #hero-bg {
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+
+<body class="bg-black text-white font-poppins overflow-x-hidden">
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const isAuthenticated = localStorage.getItem('isAuthenticated');
+
+            // if (!isAuthenticated) {
+            //     // Redirect to login page if not authenticated
+            //     window.location.href = 'home.html';
+            // } else if (window.location.pathname !== '/home.html') {
+            //     console.log('Redirecting to home.html');
+            //     window.location.href = 'home.html';
+            // }
+        });
+    </script>
+
+    Loading Screen
+    <div id="loading-screen"
+        class="fixed inset-0 bg-black flex items-center justify-center z-50 transition-all duration-800">
+        <!-- Background particles -->
+        <div id="particles" class="absolute inset-0 overflow-hidden z-10"></div>
+
+        <div class="relative z-20 text-center p-8 max-w-[90%] w-[400px]">
+            <div class="relative w-[180px] h-[180px] mx-auto mb-8">
+                <div
+                    class="ktj-spinner absolute w-full h-full rounded-full border-3 border-transparent border-t-primary">
+                </div>
+                <div
+                    class="ktj-spinner absolute w-[80%] h-[80%] top-[10%] left-[10%] rounded-full border-3 border-transparent border-t-secondary">
+                </div>
+                <div
+                    class="ktj-spinner absolute w-[60%] h-[60%] top-[20%] left-[20%] rounded-full border-3 border-transparent border-t-tertiary">
+                </div>
+            </div>
+
+            <h2 class="loading-title text-3xl font-extrabold my-2 uppercase tracking-wider relative text-white">DAKSH
+                <span class="text-primary">2025</span>
+            </h2>
+            <p class="text-opacity-70 text-white my-6 text-sm uppercase tracking-wider">Loading Experience</p>
+
+            <div class="w-full h-[2px] bg-white bg-opacity-10 relative overflow-hidden">
+                <div class="progress-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Site Content -->
+    <div id="site-container" class="opacity-0 transition-opacity duration-1000">
+        <!-- Header -->
+        <header id="header"
+            class="fixed top-0 left-0 w-full z-50 py-4 bg-black bg-opacity-80 backdrop-blur border-b border-white border-opacity-10 transition-all duration-300">
+            <div class="max-w-7xl mx-auto px-8 flex justify-between items-center">
+                <a href="#" class="text-gradient text-2xl font-extrabold tracking-wide">DAKSH</a>
+
+                <!-- Greeting and Logout -->
+
+
+                <button id="mobile-menu-btn" class="lg:hidden bg-transparent text-white text-2xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <nav id="nav-links" class="hidden lg:flex gap-8">
+                    <ul id="nav-links" class="hidden lg:flex gap-8">
+                        <li><a href="#hero"
+                                class="text-sm font-medium uppercase tracking-wide relative hover:text-white transition-colors duration-300 after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-[2px] after:bg-gradient-to-r after:from-primary after:to-secondary after:transition-all after:duration-300 hover:after:w-full">Home</a>
+                        </li>
+                        <li><a href="#events"
+                                class="text-sm font-medium uppercase tracking-wide relative hover:text-white transition-colors duration-300 after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-[2px] after:bg-gradient-to-r after:from-primary after:to-secondary after:transition-all after:duration-300 hover:after:w-full">Events</a>
+                        </li>
+                        <li><a href="#about"
+                                class="text-sm font-medium uppercase tracking-wide relative hover:text-white transition-colors duration-300 after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-[2px] after:bg-gradient-to-r after:from-primary after:to-secondary after:transition-all after:duration-300 hover:after:w-full">About</a>
+                        </li>
+                        <li><a href="#sponsors"
+                                class="text-sm font-medium uppercase tracking-wide relative hover:text-white transition-colors duration-300 after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-[2px] after:bg-gradient-to-r after:from-primary after:to-secondary after:transition-all after:duration-300 hover:after:w-full">Sponsors</a>
+                        </li>
+                        <li><a href="#contact"
+                                class="text-sm font-medium uppercase tracking-wide relative hover:text-white transition-colors duration-300 after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-[2px] after:bg-gradient-to-r after:from-primary after:to-secondary after:transition-all after:duration-300 hover:after:w-full">Contact</a>
+                        </li>
+                        <div class="flex items-center gap-4">
+                            <div id="greeting" class="text-sm font-medium text-white"></div>
+                            <button id="logout-btn"
+                                class="text-sm font-medium text-white bg-red-500 px-4 py-2 rounded hover:bg-red-600 transition-all">
+                                Logout
+                            </button>
+                        </div>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section id="hero" class="relative min-h-screen flex items-center justify-center py-32 px-8 overflow-hidden">
+            <!-- Add a background image -->
+            <!-- <div id="hero-bg" class="absolute inset-0 -z-10 bg-cover bg-center bg-gray-800"
+                style="background-image: url('homebg.jpg');">
+            </div> -->
+
+            <div class="text-center max-w-4xl mx-auto relative z-10">
+                <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight uppercase tracking-wide">Welcome to
+                    <span class="block text-gradient">DAKSH 2025</span>
+                </h1>
+
+                <p class="text-lg md:text-xl font-normal text-white text-opacity-80 mb-8 tracking-wide">
+                    <span id="slogan"></span>
+                </p>
+                <script>
+                    var typed = new Typed('#slogan', {
+                        strings: [
+                            'Where Innovation Meets Celebration!',
+                            'Unleash the Genius, Embrace the Vibe!',
+                            'Fueling Minds, Igniting Passions!',
+                            'The Future Begins Here!',
+                            'Code, Create, Celebrate!',
+                            'Technology, Tradition, Triumph!'
+                        ],
+                        typeSpeed: 40,
+                        backSpeed: 30,
+                        backDelay: 2000,
+                        loop: true
+                    });
+                </script>
+
+                <div class="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+                    <a href="#events"
+                        class="inline-block py-3 px-8 rounded-full font-semibold uppercase tracking-wide text-sm bg-gradient-to-r from-primary to-secondary text-white shadow-lg shadow-primary/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/60">
+                        Explore Events
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Events Section -->
+        <section id="events" class="py-24 px-8 relative">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-extrabold mb-4 tracking-wide uppercase text-gradient inline-block">Featured
+                    Events</h2>
+                <p class="text-lg text-white text-opacity-70 max-w-2xl mx-auto">Discover our exciting lineup of
+                    technical,
+                    cultural and management events</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                <div
+                    class="bg-white bg-opacity-5 rounded-xl overflow-hidden shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:shadow-3xl relative border border-white border-opacity-10 hover:border-opacity-20 before:absolute before:inset-0 before:bg-gradient-to-r before:from-primary before:to-secondary before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-20 before:z-0">
+                    <div class="w-full h-[200px] bg-black bg-opacity-50 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-r from-primary to-secondary opacity-50"></div>
+                    </div>
+                    <div class="p-6 relative z-10">
+                        <h3 class="text-2xl font-bold mb-2 text-white">Hackathon</h3>
+                        <p class="text-white text-opacity-70 mb-6 text-sm leading-relaxed">A 24-hour coding marathon to
+                            solve
+                            real-world problems with innovative solutions.</p>
+                        <div
+                            class="flex justify-between border-t border-white border-opacity-10 pt-4 text-xs text-white text-opacity-60">
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-calendar text-primary"></i>
+                                <span>March 15, 2025</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-users text-primary"></i>
+                                <span>Team of 4</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-white bg-opacity-5 rounded-xl overflow-hidden shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:shadow-3xl relative border border-white border-opacity-10 hover:border-opacity-20 before:absolute before:inset-0 before:bg-gradient-to-r before:from-primary before:to-secondary before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-20 before:z-0">
+                    <div class="w-full h-[200px] bg-black bg-opacity-50 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-r from-primary to-secondary opacity-50"></div>
+                    </div>
+                    <div class="p-6 relative z-10">
+                        <h3 class="text-2xl font-bold mb-2 text-white">Robotics Challenge</h3>
+                        <p class="text-white text-opacity-70 mb-6 text-sm leading-relaxed">Design and program robots to
+                            navigate
+                            complex terrains and complete challenging tasks.</p>
+                        <div
+                            class="flex justify-between border-t border-white border-opacity-10 pt-4 text-xs text-white text-opacity-60">
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-calendar text-primary"></i>
+                                <span>March 16, 2025</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-users text-primary"></i>
+                                <span>Team of 3</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-white bg-opacity-5 rounded-xl overflow-hidden shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:shadow-3xl relative border border-white border-opacity-10 hover:border-opacity-20 before:absolute before:inset-0 before:bg-gradient-to-r before:from-primary before:to-secondary before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-20 before:z-0">
+                    <div class="w-full h-[200px] bg-black bg-opacity-50 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-r from-primary to-secondary opacity-50"></div>
+                    </div>
+                    <div class="p-6 relative z-10">
+                        <h3 class="text-2xl font-bold mb-2 text-white">Blockchain Workshop</h3>
+                        <p class="text-white text-opacity-70 mb-6 text-sm leading-relaxed">Learn the fundamentals of
+                            blockchain
+                            technology and build your first decentralized application.</p>
+                        <div
+                            class="flex justify-between border-t border-white border-opacity-10 pt-4 text-xs text-white text-opacity-60">
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-calendar text-primary"></i>
+                                <span>March 17, 2025</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-user text-primary"></i>
+                                <span>Individual</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Countdown Section -->
+        <section
+            class="py-32 px-8 text-center bg-black bg-[url('https://source.unsplash.com/random/1600x900/?technology')] bg-center bg-no-repeat bg-blend-overlay bg-opacity-80 relative overflow-hidden">
+            <h2 class="text-4xl font-extrabold mb-8 tracking-wider uppercase">Event Starts In</h2>
+
+            <div id="countdown" class="flex flex-wrap justify-center gap-4 mb-12">
+                <div
+                    class="bg-white bg-opacity-10 rounded-xl p-6 min-w-[120px] shadow-2xl backdrop-blur border border-white border-opacity-10">
+                    <div id="days" class="text-5xl font-extrabold mb-2 text-gradient">00</div>
+                    <div class="text-sm uppercase tracking-wider text-white text-opacity-70">Days</div>
+                </div>
+
+                <div
+                    class="bg-white bg-opacity-10 rounded-xl p-6 min-w-[120px] shadow-2xl backdrop-blur border border-white border-opacity-10">
+                    <div id="hours" class="text-5xl font-extrabold mb-2 text-gradient">00</div>
+                    <div class="text-sm uppercase tracking-wider text-white text-opacity-70">Hours</div>
+                </div>
+
+                <div
+                    class="bg-white bg-opacity-10 rounded-xl p-6 min-w-[120px] shadow-2xl backdrop-blur border border-white border-opacity-10">
+                    <div id="minutes" class="text-5xl font-extrabold mb-2 text-gradient">00</div>
+                    <div class="text-sm uppercase tracking-wider text-white text-opacity-70">Minutes</div>
+                </div>
+
+                <div
+                    class="bg-white bg-opacity-10 rounded-xl p-6 min-w-[120px] shadow-2xl backdrop-blur border border-white border-opacity-10">
+                    <div id="seconds" class="text-5xl font-extrabold mb-2 text-gradient">00</div>
+                    <div class="text-sm uppercase tracking-wider text-white text-opacity-70">Seconds</div>
+                </div>
+            </div>
+
+            <a href="#"
+                class="inline-block py-3 px-8 rounded-full font-semibold uppercase tracking-wide text-sm bg-gradient-to-r from-primary to-secondary text-white shadow-lg shadow-primary/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/60">Register
+                Now</a>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-24 px-8 relative">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-extrabold mb-4 tracking-wide uppercase text-gradient inline-block">About DAKSH
+                </h2>
+                <p class="text-lg text-white text-opacity-70 max-w-2xl mx-auto">Know more about the legacy and vision of
+                    DAKSH
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-7xl mx-auto">
+                <div>
+                    <h3 class="text-3xl font-bold mb-6 tracking-wide">The Premier Tech Festival of Eastern India</h3>
+                    <p class="text-white text-opacity-70 mb-6 leading-relaxed">DAKSH is the annual technical and
+                        cultural festival
+                        of DAKSH University, one of the premier technical and professional education institutes of
+                        India. The fest
+                        is a dazzling display of talent, innovation, and passion across a multitude of domains.</p>
+                    <p class="text-white text-opacity-70 mb-6 leading-relaxed">With a legacy of excellence spanning over
+                        a
+                        decade,DAKSH brings together the brightest minds from across the country to compete,
+                        collaborate, and
+                        celebrate the spirit of technology and culture.</p>
+
+                    <div class="grid grid-cols-2 gap-6 mt-8">
+                        <div
+                            class="bg-white bg-opacity-5 rounded-xl p-6 text-center border border-white border-opacity-10 transition-all duration-300 hover:-translate-y-1 hover:bg-opacity-8 hover:border-opacity-20">
+                            <div class="text-4xl font-extrabold mb-2 text-gradient">15K+</div>
+                            <div class="text-sm text-white text-opacity-80 uppercase tracking-wide">Participants</div>
+                        </div>
+
+                        <div
+                            class="bg-white bg-opacity-5 rounded-xl p-6 text-center border border-white border-opacity-10 transition-all duration-300 hover:-translate-y-1 hover:bg-opacity-8 hover:border-opacity-20">
+                            <div class="text-4xl font-extrabold mb-2 text-gradient">50+</div>
+                            <div class="text-sm text-white text-opacity-80 uppercase tracking-wide">Events</div>
+                        </div>
+
+                        <div
+                            class="bg-white bg-opacity-5 rounded-xl p-6 text-center border border-white border-opacity-10 transition-all duration-300 hover:-translate-y-1 hover:bg-opacity-8 hover:border-opacity-20">
+                            <div class="text-4xl font-extrabold mb-2 text-gradient">100+</div>
+                            <div class="text-sm text-white text-opacity-80 uppercase tracking-wide">Colleges</div>
+                        </div>
+
+                        <div
+                            class="bg-white bg-opacity-5 rounded-xl p-6 text-center border border-white border-opacity-10 transition-all duration-300 hover:-translate-y-1 hover:bg-opacity-8 hover:border-opacity-20">
+                            <div class="text-4xl font-extrabold mb-2 text-gradient">5M+</div>
+                            <div class="text-sm text-white text-opacity-80 uppercase tracking-wide">Prize Pool</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative rounded-xl overflow-hidden h-full min-h-[400px]">
+                    <div
+                        class="about-image-placeholder absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sponsors Section -->
+        <section id="sponsors" class="py-24 px-8 relative">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-extrabold mb-4 tracking-wide uppercase text-gradient inline-block">Our Sponsors
+                </h2>
+                <p class="text-lg text-white text-opacity-70 max-w-2xl mx-auto">Proud partners who make DAKSH possible
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 max-w-7xl mx-auto">
+                <div
+                    class="bg-white bg-opacity-5 rounded-xl aspect-video flex items-center justify-center p-6 transition-all duration-300 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 hover:-translate-y-1 hover:bg-opacity-10 border border-white border-opacity-10 hover:border-opacity-20">
+                    <div class="w-full h-full rounded bg-gradient-to-r from-primary to-secondary opacity-20"></div>
+                </div>
+
+                <div
+                    class="bg-white bg-opacity-5 rounded-xl aspect-video flex items-center justify-center p-6 transition-all duration-300 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 hover:-translate-y-1 hover:bg-opacity-10 border border-white border-opacity-10 hover:border-opacity-20">
+                    <div class="w-full h-full rounded bg-gradient-to-r from-primary to-secondary opacity-20"></div>
+                </div>
+
+                <div
+                    class="bg-white bg-opacity-5 rounded-xl aspect-video flex items-center justify-center p-6 transition-all duration-300 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 hover:-translate-y-1 hover:bg-opacity-10 border border-white border-opacity-10 hover:border-opacity-20">
+                    <div class="w-full h-full rounded bg-gradient-to-r from-primary to-secondary opacity-20"></div>
+                </div>
+
+                <div
+                    class="bg-white bg-opacity-5 rounded-xl aspect-video flex items-center justify-center p-6 transition-all duration-300 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 hover:-translate-y-1 hover:bg-opacity-10 border border-white border-opacity-10 hover:border-opacity-20">
+                    <div class="w-full h-full rounded bg-gradient-to-r from-primary to-secondary opacity-20"></div>
+                </div>
+
+                <div
+                    class="bg-white bg-opacity-5 rounded-xl aspect-video flex items-center justify-center p-6 transition-all duration-300 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 hover:-translate-y-1 hover:bg-opacity-10 border border-white border-opacity-10 hover:border-opacity-20">
+                    <div class="w-full h-full rounded bg-gradient-to-r from-primary to-secondary opacity-20"></div>
+                </div>
+
+                <div
+                    class="bg-white bg-opacity-5 rounded-xl aspect-video flex items-center justify-center p-6 transition-all duration-300 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 hover:-translate-y-1 hover:bg-opacity-10 border border-white border-opacity-10 hover:border-opacity-20">
+                    <div class="w-full h-full rounded bg-gradient-to-r from-primary to-secondary opacity-20"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-24 px-8 relative">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-extrabold mb-4 tracking-wide uppercase text-gradient inline-block">Contact Us
+                </h2>
+                <p class="text-lg text-white text-opacity-70 max-w-2xl mx-auto">Get in touch with our team</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-7xl mx-auto">
+                <div class="flex flex-col gap-6">
+                    <div
+                        class="flex items-start gap-4 p-6 bg-white bg-opacity-5 rounded-xl transition-all duration-300 hover:-translate-y-1 hover:bg-opacity-8 border border-white border-opacity-10 hover:border-opacity-20">
+                        <div
+                            class="w-[50px] h-[50px] bg-primary/10 rounded-full flex items-center justify-center text-2xl text-primary">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-medium mb-2">Location</h4>
+                            <p class="text-white text-opacity-70 text-sm">Government Engineering College , West
+                                Champaran </p>
+                        </div>
+                    </div>
+
+                    <div
+                        class="flex items-start gap-4 p-6 bg-white bg-opacity-5 rounded-xl transition-all duration-300 hover:-translate-y-1 hover:bg-opacity-8 border border-white border-opacity-10 hover:border-opacity-20">
+                        <div
+                            class="w-[50px] h-[50px] bg-primary/10 rounded-full flex items-center justify-center text-2xl text-primary">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-medium mb-2">Email</h4>
+                            <p class="text-white text-opacity-70 text-sm">info@dakshfest.org</p>
+                        </div>
+                    </div>
+
+                    <div
+                        class="flex items-start gap-4 p-6 bg-white bg-opacity-5 rounded-xl transition-all duration-300 hover:-translate-y-1 hover:bg-opacity-8 border border-white border-opacity-10 hover:border-opacity-20">
+                        <div
+                            class="w-[50px] h-[50px] bg-primary/10 rounded-full flex items-center justify-center text-2xl text-primary">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-medium mb-2">Phone</h4>
+                            <p class="text-white text-opacity-70 text-sm">+91 8765432109</p>
+                        </div>
+                    </div>
+
+                    <div
+                        class="flex items-start gap-4 p-6 bg-white bg-opacity-5 rounded-xl transition-all duration-300 hover:-translate-y-1 hover:bg-opacity-8 border border-white border-opacity-10 hover:border-opacity-20">
+                        <div
+                            class="w-[50px] h-[50px] bg-primary/10 rounded-full flex items-center justify-center text-2xl text-primary">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-medium mb-2">Social Media</h4>
+                            <div class="flex gap-4 mt-4">
+                                <a href="#"
+                                    class="w-[40px] h-[40px] bg-white bg-opacity-10 rounded-full flex items-center justify-center text-xl transition-all duration-300 hover:bg-gradient-to-r hover:from-primary hover:to-secondary hover:-translate-y-1"><i
+                                        class="fab fa-facebook-f"></i></a>
+                                <a href="#"
+                                    class="w-[40px] h-[40px] bg-white bg-opacity-10 rounded-full flex items-center justify-center text-xl transition-all duration-300 hover:bg-gradient-to-r hover:from-primary hover:to-secondary hover:-translate-y-1"><i
+                                        class="fab fa-twitter"></i></a>
+                                <a href="#"
+                                    class="w-[40px] h-[40px] bg-white bg-opacity-10 rounded-full flex items-center justify-center text-xl transition-all duration-300 hover:bg-gradient-to-r hover:from-primary hover:to-secondary hover:-translate-y-1"><i
+                                        class="fab fa-instagram"></i></a>
+                                <a href="#"
+                                    class="w-[40px] h-[40px] bg-white bg-opacity-10 rounded-full flex items-center justify-center text-xl transition-all duration-300 hover:bg-gradient-to-r hover:from-primary hover:to-secondary hover:-translate-y-1"><i
+                                        class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-8 bg-white bg-opacity-3 rounded-xl border border-white border-opacity-10">
+                    <form>
+                        <div class="mb-6">
+                            <input type="text"
+                                class="w-full p-4 bg-white bg-opacity-5 border border-white border-opacity-10 rounded-md text-white placeholder:text-white placeholder:text-opacity-50 focus:border-primary focus:outline-none focus:bg-white focus:bg-opacity-8 transition-all text-sm"
+                                placeholder="Your Name" required>
+                        </div>
+
+                        <div class="mb-6">
+                            <input type="email"
+                                class="w-full p-4 bg-white bg-opacity-5 border border-white border-opacity-10 rounded-md text-white placeholder:text-white placeholder:text-opacity-50 focus:border-primary focus:outline-none focus:bg-white focus:bg-opacity-8 transition-all text-sm"
+                                placeholder="Your Email" required>
+                        </div>
+
+                        <div class="mb-6">
+                            <input type="text"
+                                class="w-full p-4 bg-white bg-opacity-5 border border-white border-opacity-10 rounded-md text-white placeholder:text-white placeholder:text-opacity-50 focus:border-primary focus:outline-none focus:bg-white focus:bg-opacity-8 transition-all text-sm"
+                                placeholder="Subject" required>
+                        </div>
+
+                        <div class="mb-6">
+                            <textarea
+                                class="w-full p-4 bg-white bg-opacity-5 border border-white border-opacity-10 rounded-md text-white placeholder:text-white placeholder:text-opacity-50 focus:border-primary focus:outline-none focus:bg-white focus:bg-opacity-8 transition-all min-h-[150px] resize-y text-sm"
+                                placeholder="Your Message" required></textarea>
+                        </div>
+
+                        <button type="submit"
+                            class="inline-block py-3 px-8 rounded-full font-semibold uppercase tracking-wide text-sm bg-gradient-to-r from-primary to-secondary text-white shadow-lg shadow-primary/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/60">Send
+                            Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-dark py-16 px-8 relative">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                    <div>
+                        <h3
+                            class="text-xl font-semibold mb-6 relative pb-2 after:absolute after:bottom-0 after:left-0 after:w-[50px] after:h-[2px] after:bg-gradient-to-r after:from-primary after:to-secondary">
+                            DAKSH</h3>
+                        <p class="text-white text-opacity-70 text-sm mb-4 leading-relaxed">
+                            The largest technical and cultural festival of Eastern India, bringing together the
+                            brightest minds for
+                            innovation and celebration.
+                        </p>
+                    </div>
+
+                    <div>
+                        <h3
+                            class="text-xl font-semibold mb-6 relative pb-2 after:absolute after:bottom-0 after:left-0 after:w-[50px] after:h-[2px] after:bg-gradient-to-r after:from-primary after:to-secondary">
+                            Quick Links</h3>
+                        <ul class="flex flex-col gap-3">
+                            <li><a href="#hero"
+                                    class="text-white text-opacity-70 text-sm transition-all duration-300 hover:text-white hover:translate-x-1">Home</a>
+                            </li>
+                            <li><a href="#events"
+                                    class="text-white text-opacity-70 text-sm transition-all duration-300 hover:text-white hover:translate-x-1">Events</a>
+                            </li>
+                            <li><a href="#about"
+                                    class="text-white text-opacity-70 text-sm transition-all duration-300 hover:text-white hover:translate-x-1">About</a>
+                            </li>
+                            <li><a href="#sponsors"
+                                    class="text-white text-opacity-70 text-sm transition-all duration-300 hover:text-white hover:translate-x-1">Sponsors</a>
+                            </li>
+                            <li><a href="#contact"
+                                    class="text-white text-opacity-70 text-sm transition-all duration-300 hover:text-white hover:translate-x-1">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3
+                            class="text-xl font-semibold mb-6 relative pb-2 after:absolute after:bottom-0 after:left-0 after:w-[50px] after:h-[2px] after:bg-gradient-to-r after:from-primary after:to-secondary">
+                            Events</h3>
+                        <ul class="flex flex-col gap-3">
+                            <li><a href="#"
+                                    class="text-white text-opacity-70 text-sm transition-all duration-300 hover:text-white hover:translate-x-1">Technical</a>
+                            </li>
+                            <li><a href="#"
+                                    class="text-white text-opacity-70 text-sm transition-all duration-300 hover:text-white hover:translate-x-1">Cultural</a>
+                            </li>
+                            <li><a href="#"
+                                    class="text-white text-opacity-70 text-sm transition-all duration-300 hover:text-white hover:translate-x-1">Management</a>
+                            </li>
+                            <li><a href="#"
+                                    class="text-white text-opacity-70 text-sm transition-all duration-300 hover:text-white hover:translate-x-1">Workshops</a>
+                            </li>
+                            <li><a href="#"
+                                    class="text-white text-opacity-70 text-sm transition-all duration-300 hover:text-white hover:translate-x-1">Guest
+                                    Lectures</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3
+                            class="text-xl font-semibold mb-6 relative pb-2 after:absolute after:bottom-0 after:left-0 after:w-[50px] after:h-[2px] after:bg-gradient-to-r after:from-primary after:to-secondary">
+                            Connect With Us</h3>
+                        <div class="flex gap-4 mt-4">
+                            <a href="#"
+                                class="w-[40px] h-[40px] bg-white bg-opacity-10 rounded-full flex items-center justify-center text-xl transition-all duration-300 hover:bg-gradient-to-r hover:from-primary hover:to-secondary hover:-translate-y-1"><i
+                                    class="fab fa-facebook-f"></i></a>
+                            <a href="#"
+                                class="w-[40px] h-[40px] bg-white bg-opacity-10 rounded-full flex items-center justify-center text-xl transition-all duration-300 hover:bg-gradient-to-r hover:from-primary hover:to-secondary hover:-translate-y-1"><i
+                                    class="fab fa-twitter"></i></a>
+                            <a href="#"
+                                class="w-[40px] h-[40px] bg-white bg-opacity-10 rounded-full flex items-center justify-center text-xl transition-all duration-300 hover:bg-gradient-to-r hover:from-primary hover:to-secondary hover:-translate-y-1"><i
+                                    class="fab fa-instagram"></i></a>
+                            <a href="#"
+                                class="w-[40px] h-[40px] bg-white bg-opacity-10 rounded-full flex items-center justify-center text-xl transition-all duration-300 hover:bg-gradient-to-r hover:from-primary hover:to-secondary hover:-translate-y-1"><i
+                                    class="fab fa-linkedin-in"></i></a>
+                            <a href="#"
+                                class="w-[40px] h-[40px] bg-white bg-opacity-10 rounded-full flex items-center justify-center text-xl transition-all duration-300 hover:bg-gradient-to-r hover:from-primary hover:to-secondary hover:-translate-y-1"><i
+                                    class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="border-t border-white border-opacity-10 pt-8 text-center text-sm text-white text-opacity-50">
+                    <p>&copy; 2025 DAKSH. All Rights Reserved. Designed with <i class="fas fa-heart text-secondary"></i>
+                        by <a href="#" class="text-primary font-semibold">DAKSH Web Team</a></p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Create particles for loading screen
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            if (!particlesContainer) return;
+
+            // Clear existing particles
+            particlesContainer.innerHTML = '';
+
+            // Create 30 particles
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('span');
+                particle.className = 'particle';
+
+                // Random size between 2px and 6px
+                const size = Math.random() * 4 + 2;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+
+                // Random position
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+
+                // Random opacity between 0.2 and 0.8
+                particle.style.opacity = (Math.random() * 0.6 + 0.2).toString();
+
+                // Random animation duration and delay
+                const duration = Math.random() * 20 + 10;
+                const delay = Math.random() * 5;
+                particle.style.animation = `particle-float ${duration}s ${delay}s infinite ease-in-out alternate`;
+
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Add particle animation style
+        function addParticleStyles() {
+            const styleElement = document.createElement('style');
+            styleElement.textContent = `
+        @keyframes particle-float {
+          0% {
+            transform: translateY(0) translateX(0);
+          }
+          25% {
+            transform: translateY(-${Math.random() * 100 + 50}px) translateX(${Math.random() * 50 - 25}px);
+          }
+          50% {
+            transform: translateY(-${Math.random() * 150 + 100}px) translateX(${Math.random() * 100 - 50}px);
+          }
+          75% {
+            transform: translateY(-${Math.random() * 100 + 50}px) translateX(${Math.random() * 50 - 25}px);
+          }
+          100% {
+            transform: translateY(0) translateX(0);
+          }
+        }
+      `;
+            document.head.appendChild(styleElement);
+        }
+
+        // Create hero background particles
+        function createHeroParticles() {
+            const heroBg = document.getElementById('hero-bg');
+            if (!heroBg) return;
+
+            // Create 20 particles
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'hero-particle';
+
+                // Random size between 10px and 50px
+                const size = Math.random() * 40 + 10;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+
+                // Random position
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+
+                // Random opacity and animation
+                particle.style.opacity = (Math.random() * 0.2 + 0.05).toString();
+                particle.style.borderRadius = '50%';
+
+                const delay = Math.random() * 10;
+                const duration = Math.random() * 10 + 10;
+                particle.style.animation = `float ${duration}s ${delay}s infinite ease-in-out`;
+
+                // Random background gradient
+                const r1 = Math.floor(Math.random() * 100 + 150);
+                const g1 = Math.floor(Math.random() * 100 + 150);
+                const b1 = Math.floor(Math.random() * 255);
+                particle.style.background = `radial-gradient(circle at center, rgba(${r1}, ${g1}, ${b1}, 0.8), rgba(0, 0, 0, 0))`;
+
+                heroBg.appendChild(particle);
+            }
+        }
+
+        // Countdown timer
+        function startCountdown() {
+            // Set the target date - March 15, 2025
+            const targetDate = new Date('March 15, 2025 00:00:00').getTime();
+
+            // Update the countdown every second
+            const countdownInterval = setInterval(function () {
+                // Get current date and time
+                const now = new Date().getTime();
+
+                // Find the distance between now and the countdown date
+                const distance = targetDate - now;
+
+                // Time calculations for days, hours, minutes and seconds
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Display the result
+                document.getElementById('days').innerHTML = days.toString().padStart(2, '0');
+                document.getElementById('hours').innerHTML = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').innerHTML = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').innerHTML = seconds.toString().padStart(2, '0');
+
+                // If the countdown is finished, clear the interval
+                if (distance < 0) {
+                    clearInterval(countdownInterval);
+                    document.getElementById('countdown').innerHTML = "<h3>Event has started!</h3>";
+                }
+            }, 1000);
+        }
+
+        // Loading screen handler
+        function handleLoadingScreen() {
+            // Ensure site container starts hidden
+            const siteContainer = document.getElementById('site-container');
+            if (siteContainer) {
+                siteContainer.style.opacity = '0';
+            }
+
+            const loadingScreen = document.getElementById('loading-screen');
+            if (!loadingScreen) return;
+
+            // Ensure loading screen is visible
+            loadingScreen.style.opacity = '1';
+            loadingScreen.style.visibility = 'visible';
+
+            // Create particles
+            createParticles();
+            addParticleStyles();
+
+            // Simulate loading time (4 seconds)
+            setTimeout(() => {
+                // Fade out loading screen
+                loadingScreen.style.opacity = '0';
+                loadingScreen.style.visibility = 'hidden';
+
+                // Fade in site content
+                if (siteContainer) {
+                    setTimeout(() => {
+                        siteContainer.style.opacity = '1';
+                    }, 500);
+                }
+            }, 4000);
+        }
+
+        // Header scroll effect
+        function handleHeaderScroll() {
+            const header = document.getElementById('header');
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('py-2');
+                    header.classList.add('bg-opacity-95');
+                } else {
+                    header.classList.remove('py-2');
+                    header.classList.remove('bg-opacity-95');
+                }
+            });
+        }
+
+        // Mobile menu toggle
+        function setupMobileMenu() {
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const navLinks = document.getElementById('nav-links');
+
+            if (!mobileMenuBtn || !navLinks) return;
+
+            mobileMenuBtn.addEventListener('click', () => {
+                if (navLinks.classList.contains('hidden')) {
+                    navLinks.classList.remove('hidden');
+                    navLinks.classList.add('fixed', 'top-0', 'right-0', 'w-4/5', 'max-w-sm', 'h-screen', 'bg-black', 'bg-opacity-95', 'flex', 'flex-col', 'p-20', 'z-50');
+
+                    // Toggle icon
+                    const icon = mobileMenuBtn.querySelector('i');
+                    if (icon) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    }
+
+                    // Make mobile menu button fixed
+                    mobileMenuBtn.classList.add('fixed', 'right-8', 'z-50');
+                } else {
+                    navLinks.classList.add('hidden');
+                    navLinks.classList.remove('fixed', 'top-0', 'right-0', 'w-4/5', 'max-w-sm', 'h-screen', 'bg-black', 'bg-opacity-95', 'flex', 'flex-col', 'p-20', 'z-50');
+
+                    // Toggle icon
+                    const icon = mobileMenuBtn.querySelector('i');
+                    if (icon) {
+                        icon.classList.add('fa-bars');
+                        icon.classList.remove('fa-times');
+                    }
+
+                    // Remove fixed class from mobile menu button
+                    mobileMenuBtn.classList.remove('fixed', 'right-8', 'z-50');
+                }
+            });
+
+            // Close mobile menu when clicking on links
+            const links = navLinks.querySelectorAll('a');
+            links.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (!navLinks.classList.contains('hidden')) {
+                        navLinks.classList.add('hidden');
+                        navLinks.classList.remove('fixed', 'top-0', 'right-0', 'w-4/5', 'max-w-sm', 'h-screen', 'bg-black', 'bg-opacity-95', 'flex', 'flex-col', 'p-20', 'z-50');
+
+                        // Toggle icon
+                        const icon = mobileMenuBtn.querySelector('i');
+                        if (icon) {
+                            icon.classList.add('fa-bars');
+                            icon.classList.remove('fa-times');
+                        }
+
+                        // Remove fixed class from mobile menu button
+                        mobileMenuBtn.classList.remove('fixed', 'right-8', 'z-50');
+                    }
+                });
+            });
+        }
+
+        // Smooth scrolling for anchor links
+        function setupSmoothScrolling() {
+            const links = document.querySelectorAll('a[href^="#"]');
+
+            links.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const headerHeight = document.getElementById('header').offsetHeight;
+                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', () => {
+            // Handle loading screen
+            handleLoadingScreen();
+
+            // After loading is complete, initialize other elements
+            setTimeout(() => {
+                createHeroParticles();
+                startCountdown();
+                handleHeaderScroll();
+                setupMobileMenu();
+                setupSmoothScrolling();
+            }, 4000);
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Retrieve the user's name from localStorage
+            const userName = localStorage.getItem('userName');
+
+            // If a user name exists, display a personalized greeting
+            if (userName) {
+                const greetingContainer = document.getElementById('greeting');
+                greetingContainer.textContent = `Hi, ${userName}!`;
+            }
+
+            // Logout functionality
+            document.getElementById('logout-btn').addEventListener('click', () => {
+                localStorage.removeItem('isAuthenticated');
+                localStorage.removeItem('userName'); // Optional: Clear username
+                window.location.href = 'index.html';
+            });
+        });
+    </script>
+</body>
+
+</html>

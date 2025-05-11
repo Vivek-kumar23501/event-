@@ -1,0 +1,82 @@
+<!-- public/register.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Register</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background: url('images/Register bg.avif') no-repeat center center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-container {
+    max-width: 400px;
+    width: 90%;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    color: white;
+}
+
+input, select, button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+</style>
+</head>
+
+<body>
+<div class="form-container">
+    <h3>Student Registration</h3>
+    <form id="registerForm">
+        <input type="text" placeholder="Name" name="name" required>
+        <input type="email" placeholder="Email" name="email" required>
+        <input type="text" placeholder="Student ID" name="studentId" required>
+
+        <select name="department" required>
+            <option value="">--Select Department--</option>
+            <option value="cse">CSE</option>
+            <option value="ece">ECE</option>
+            <option value="me">ME</option>
+            <option value="ce">CE</option>
+            <option value="ee">EE</option>
+            <option value="mba">MBA</option>
+        </select>
+
+        <input type="password" placeholder="Create Password" name="password" required>
+        <input type="password" placeholder="Confirm Password" name="confirmPassword" required>
+        <button type="submit">Register</button>
+    </form>
+</div>
+
+<script>
+document.getElementById('registerForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const form = new FormData(e.target);
+    const data = Object.fromEntries(form.entries());
+    data.role = "student";
+
+    const res = await fetch('/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+    });
+    const result = await res.json();
+    alert(result.message || result.error);
+});
+</script>
+
+</body>
+</html>

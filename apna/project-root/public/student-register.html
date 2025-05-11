@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Student Registration</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+</head>
+<body class="flex items-center justify-center min-h-screen bg-gray-100">
+  <form id="registerForm" class="bg-white p-6 rounded-lg shadow-md w-full max-w-md">
+    <h2 class="text-2xl font-bold mb-4">Student Registration</h2>
+    <input type="text" id="name" placeholder="Name" required class="mb-3 w-full p-2 border border-gray-300 rounded" />
+    <input type="text" id="roll" placeholder="Roll Number" required class="mb-3 w-full p-2 border border-gray-300 rounded" />
+    <input type="email" id="email" placeholder="Email" required class="mb-3 w-full p-2 border border-gray-300 rounded" />
+    <input type="text" id="branch" placeholder="Branch" required class="mb-3 w-full p-2 border border-gray-300 rounded" />
+    <input type="tel" id="mobile" placeholder="Mobile Number" required class="mb-3 w-full p-2 border border-gray-300 rounded" />
+    <input type="password" id="password" placeholder="Password" required class="mb-4 w-full p-2 border border-gray-300 rounded" />
+    <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded w-full">Register</button>
+    <p id="message" class="mt-4 text-sm"></p>
+  </form>
+
+  <script>
+    document.getElementById("registerForm").addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const student = {
+        name: document.getElementById("name").value,
+        roll: document.getElementById("roll").value,
+        email: document.getElementById("email").value,
+        branch: document.getElementById("branch").value,
+        mobile: document.getElementById("mobile").value,
+        password: document.getElementById("password").value,
+      };
+
+      try {
+        const response = await fetch("http://localhost:5000/api/register", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(student),
+        });
+
+        const data = await response.json();
+
+        const msg = document.getElementById("message");
+        if (response.status === 201) {
+          msg.style.color = "green";
+          msg.textContent = data.message;
+          e.target.reset();
+        } else {
+          msg.style.color = "red";
+          msg.textContent = data.message;
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        document.getElementById("message").textContent = "Something went wrong.";
+      }
+    });
+  </script>
+</body>
+</html>
