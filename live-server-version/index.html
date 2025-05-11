@@ -229,9 +229,35 @@
           <li><a href="#hero"
               class="text-sm font-medium uppercase tracking-wide relative hover:text-white transition-colors duration-300 after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-[2px] after:bg-gradient-to-r after:from-primary after:to-secondary after:transition-all after:duration-300 hover:after:w-full">Home</a>
           </li>
-          <li><a href="#events"
-              class="text-sm font-medium uppercase tracking-wide relative hover:text-white transition-colors duration-300 after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-[2px] after:bg-gradient-to-r after:from-primary after:to-secondary after:transition-all after:duration-300 hover:after:w-full">Events</a>
-          </li>
+   <li class="relative group">
+  <a href="#"
+    class="text-sm font-medium uppercase tracking-wide relative hover:text-white transition-colors duration-300 after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-[2px] after:bg-gradient-to-r after:from-primary after:to-secondary after:transition-all after:duration-300 group-hover:after:w-full">
+    Events
+  </a>
+
+  <!-- Dropdown Menu -->
+  <ul class="absolute hidden group-hover:block bg-black bg-opacity-95 text-left mt-2 rounded shadow-lg z-50 w-48">
+    <li>
+      <a href="/apna/project-root/public/culturalevent.html"
+         class="block px-4 py-2 text-sm text-white hover:bg-gradient-to-r hover:from-primary hover:to-secondary">
+         Cultural Events
+      </a>
+    </li>
+    <li>
+      <a href="/apna/project-root/public/technical.html"
+         class="block px-4 py-2 text-sm text-white hover:bg-gradient-to-r hover:from-primary hover:to-secondary">
+         Techniacal  Events
+      </a>
+    </li>
+    <li>
+      <a href="/apna/project-root/public/sport.html"
+         class="block px-4 py-2 text-sm text-white hover:bg-gradient-to-r hover:from-primary hover:to-secondary">
+         Sports Events
+      </a>
+    </li>
+  </ul>
+</li>
+
           <li><a href="#about"
               class="text-sm font-medium uppercase tracking-wide relative hover:text-white transition-colors duration-300 after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-[2px] after:bg-gradient-to-r after:from-primary after:to-secondary after:transition-all after:duration-300 hover:after:w-full">About</a>
           </li>
@@ -241,18 +267,38 @@
           <li><a href="#contact"
               class="text-sm font-medium uppercase tracking-wide relative hover:text-white transition-colors duration-300 after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-[2px] after:bg-gradient-to-r after:from-primary after:to-secondary after:transition-all after:duration-300 hover:after:w-full">Contact</a>
             
-               
-                <li class="relative group">
-                  <a href="#" class="text-white text-opacity-70 text-sm transition-all duration-300 hover:text-white hover:translate-x-1 flex items-center gap-1">
-                    Login <i class="fas fa-caret-down"></i>
-                  </a>
-                  <ul class="absolute hidden group-hover:block bg-black bg-opacity-95 text-left mt-2 rounded shadow-lg z-50 min-w-[150px]">
-                    <li><a href="/apna/project-root/public/eventincharge-login.html" class="block px-4 py-2 text-sm text-white hover:bg-gradient-to-r hover:from-primary hover:to-secondary">eventIncharge Login</a></li>
-                    <li><a href="/apna/project-root/public/" class="block px-4 py-2 text-sm text-white hover:bg-gradient-to-r hover:from-primary hover:to-secondary">coordinator Login</a></li>
-                    <li><a href="/apna/project-root/public/principal-login.html" class="block px-4 py-2 text-sm text-white hover:bg-gradient-to-r hover:from-primary hover:to-secondary">pricipal Login</a></li>
-                    <li><a href="/apna/project-root/public/student-login.html" class="block px-4 py-2 text-sm text-white hover:bg-gradient-to-r hover:from-primary hover:to-secondary">Student Login</a></li>
-                  </ul>
-                </li>
+               <li class="relative">
+  <!-- Login Button -->
+  <button id="loginToggle" class="text-white text-opacity-70 text-sm transition-all duration-300 hover:text-white flex items-center gap-1 focus:outline-none">
+    Login <i class="fas fa-caret-down"></i>
+  </button>
+
+  <!-- Dropdown Menu -->
+  <ul id="loginMenu" class="absolute hidden left-1/2 -translate-x-1/2 mt-2 bg-black bg-opacity-95 text-left rounded shadow-lg z-50 w-48">
+    <li><a href="/apna/project-root/public/eventincharge-login.html" class="block px-4 py-2 text-sm text-white hover:bg-gradient-to-r hover:from-primary hover:to-secondary">EventIncharge Login</a></li>
+    <li><a href="/apna/project-root/public/" class="block px-4 py-2 text-sm text-white hover:bg-gradient-to-r hover:from-primary hover:to-secondary">Coordinator Login</a></li>
+    <li><a href="/apna/project-root/public/principal-login.html" class="block px-4 py-2 text-sm text-white hover:bg-gradient-to-r hover:from-primary hover:to-secondary">Principal Login</a></li>
+    <li><a href="/apna/project-root/public/student-login.html" class="block px-4 py-2 text-sm text-white hover:bg-gradient-to-r hover:from-primary hover:to-secondary">Student Login</a></li>
+  </ul>
+</li>
+
+<!-- JavaScript to handle dropdown -->
+<script>
+  const toggleBtn = document.getElementById('loginToggle');
+  const menu = document.getElementById('loginMenu');
+
+  toggleBtn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    menu.classList.toggle('hidden');
+  });
+
+  window.addEventListener('click', function (e) {
+    if (!menu.contains(e.target) && !toggleBtn.contains(e.target)) {
+      menu.classList.add('hidden');
+    }
+  });
+</script>
+
                 
               
           </li>
